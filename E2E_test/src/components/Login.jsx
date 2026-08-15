@@ -54,7 +54,7 @@ export default function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formData);
-        nav('./Success');
+        nav('./success');
     }
 
     const handleValid = () => {
