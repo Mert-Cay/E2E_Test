@@ -1,6 +1,6 @@
 import { Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 import { useEffect, useState } from 'react';
-
+import {useNavigate} from 'react-router-dom';
 
 const initialData = {
     email: '',
@@ -18,6 +18,8 @@ export default function Login() {
     const [formData, setFormData] = useState(initialData);
     const [error, setError] = useState(initialErrorMessages);
     const [valid, setValid] = useState(false);
+
+    const nav = useNavigate();
 
     const fieldValue = (name, value) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,10 +54,12 @@ export default function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formData);
+        nav('./Success');
     }
 
     const handleValid = () => {
-        let changableValid = formData.email !== '' && formData.password !== '' && formData.terms
+        let changableValid = formData.email !== '' && formData.password !== '' && formData.terms && error.emailError === '' && 
+        error.passwordError === '';
         setValid(changableValid);
     }
 

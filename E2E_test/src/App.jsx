@@ -1,14 +1,17 @@
 import Login from '../src/components/Login';
-
+import Success from '../src/components/Success';
 import { useState } from 'react'
-
+import { Routes , Route } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <>
-      <Login/>
+     <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/success" element={<Success />} />
+    </Routes>
     </>
   )
 }
